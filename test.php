@@ -15,6 +15,9 @@ print_r($status);
 $infos = $nest->getDeviceInfo();
 print_r($infos);
 
+$weather = $nest->getWeather('Marple/UK');
+print_r($weather);
+
 stuff_we_care_about($infos);
 
 function stuff_we_care_about($info) {

@@ -6,10 +6,10 @@ require 'collect.php';
 
 try {
   $db = new DB($config);
-  $data = get_nest_data();
+  $data = get_nest_data($config);
   if (!empty($data['timestamp'])) {
-    if ($stmt = $db->res->prepare("REPLACE INTO data (timestamp, heating, target, current, humidity, updated) VALUES (?,?,?,?,?,NOW())")) {
-      $stmt->bind_param("siddi", $data['timestamp'], $data['heating'], $data['target_temp'], $data['current_temp'], $data['humidity']);
+    if ($stmt = $db->res->prepare("REPLACE INTO data (timestamp, heating, target, current, humidity, outside_temp, outside_humidity, updated) VALUES (?,?,?,?,?,?,?,NOW())")) {
+      $stmt->bind_param("siddidi", $data['timestamp'], $data['heating'], $data['target_temp'], $data['current_temp'], $data['humidity'], $data['outside_temp'], $data['outside_humidity']);
       $stmt->execute();
       $stmt->close();
     }

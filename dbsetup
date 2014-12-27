@@ -1,5 +1,5 @@
 CREATE DATABASE nest;
-GRANT ALL PRIVILEGES ON nest.* TO 'nest_admin'@'localhost' IDENTIFIED BY 'choose_a_db_password';
+GRANT ALL PRIVILEGES ON nest.* TO 'nest_admin'@'localhost' IDENTIFIED BY 'aardvark';
 FLUSH PRIVILEGES;
 
 USE nest;
@@ -9,6 +9,8 @@ CREATE TABLE `data` (
   `target` numeric(7,3) NOT NULL,
   `current` numeric(7,3) NOT NULL,
   `humidity` tinyint unsigned NOT NULL,
+  `outside_temp` numeric(7,3) NOT NULL,
+  `outside_humidity` tinyint unsigned  NOT NULL,
   `updated` timestamp NOT NULL,
   PRIMARY KEY (`timestamp`),	      
   UNIQUE KEY `timestamp` (`timestamp`)
