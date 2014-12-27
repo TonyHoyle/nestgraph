@@ -130,7 +130,7 @@ function brushUpdate() {
   upper.select(".x.axis").call(xAxis);
   upper.selectAll(".plot path")
     .attr("d", function(d) { 
-      if (d.name == "current") 
+      if (d.name == "current" || d.name == "outside_temp") 
 	return line(d.values); 
       else
 	return lineStepafter(d.values); 
@@ -219,7 +219,7 @@ d3.tsv("fetch.php?hrs=" + hours, function(error, data) {
     .append("path")
     .attr("class", "line")
     .attr("d", function(d) { 
-      if (d.name == "current") 
+      if (d.name == "current" || d.name == "outside_temp") 
 	return line(d.values); 
       else
 	return lineStepafter(d.values); 
@@ -249,7 +249,7 @@ d3.tsv("fetch.php?hrs=" + hours, function(error, data) {
     .attr("x", 3)
     .attr("dy", ".35em")
     .text(function(d) { return d.name; });
-
+/*
   // create a parent element for the circles to live
   upper.selectAll(".current")
     .append("g")
@@ -270,7 +270,7 @@ d3.tsv("fetch.php?hrs=" + hours, function(error, data) {
     .append("svg:title").text(function(d) {
       return format(d.date) + "\n" + d.val + "\u00B0 F";
     });
-  
+*/  
   // draw the d3 pan/zoom "brush" object
   lower.append("g")
     .attr("class", "x brush")
